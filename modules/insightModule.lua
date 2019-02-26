@@ -1,11 +1,11 @@
 local luaxp = require('luaxpModule')
 
-insightModule = {}
+local insightModule = {}
 
 function insightModule.addNumbers(body)
   local dataIN = body.data
   local constants = body.args.constants
-  dataOUT = {}
+  local dataOUT = {}
 
 -- dataIN is a list of datapoints
   for _, dp in pairs(dataIN) do
@@ -21,7 +21,7 @@ end
 function insightModule.addSquareNumber(body)
   local dataIN = body.data
   local constants = body.args.constants
-  dataOUT = {}
+  local dataOUT = {}
 
 -- dataIN is a list of datapoints
   for _, dp in pairs(dataIN) do
@@ -40,7 +40,7 @@ function insightModule.mathFormulaOne(body)
   local pr, message
   pr,message = luaxp.compile(constants.formula)
 
-  dataOUT = {}
+  local dataOUT = {}
 
   -- dataIN is a list of datapoints
   for _, dp in pairs(dataIN) do
@@ -60,7 +60,7 @@ function insightModule.mathFormulaTwo(body)
   local pr, message
   pr,message = luaxp.compile(constants.formula)
 
-  dataOUT = {}
+  local dataOUT = {}
 
   local hisValue = {}
   local obj
@@ -74,8 +74,6 @@ function insightModule.mathFormulaTwo(body)
     end
   end
 
-  print(json.stringify(hisValue))
-
   local inlets = {}
   -- dataIN is a list of datapoints
   for _, dp in pairs(dataIN) do
@@ -84,8 +82,6 @@ function insightModule.mathFormulaTwo(body)
 
     inlets[tonumber(dp.tags.inlet) + 1] = dp.value
 
-    print(json.stringify(inlets))
-
     -- Each signal value in dataOUT should keep the incoming metadata
     dp.value = luaxp.run(pr, {x = inlets[1], y = inlets[2]})
 
@@ -93,3 +89,29 @@ function insightModule.mathFormulaTwo(body)
   end
   return dataOUT
 end
+
+function insightModule.httpPost(body)
+  local dataIN = body.data
+  local constants = body.args.constants
+  local url = constants.url
+  local headers = constants.headers
+
+  local httpResult
+
+  if headers then
+    headers = from_json(headers)
+  else
+    headers = nil
+  end
+    
+  -- API Reference: https://docs.exosite.com/reference/services/http/#post
+  httpResult = Http.post({
+    url = url,
+    headers = headers,
+    json = body
+  })
+
+  return from_json(httpResult.body)
+end
+
+return insightModule

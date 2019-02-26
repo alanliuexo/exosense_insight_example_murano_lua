@@ -104,4 +104,37 @@ insightMeta.mathFormulaTwo = {
   }
 }
 
+insightMeta.httpPost = {
+  id = "httpPost",
+  name = "HTTP Post",
+  description = "bypass payload to external service through HTTP Post",
+  constants = {
+    {
+      name = "url",
+      type = "string",
+      description = "Endpoint url to receveive data"
+    }, {
+      name = "headers",
+      type = "string",
+      description = "Headers send with (json)"
+    }, {
+      name = "add_payload",
+      type = "string",
+      description ="Your additional payload"
+    }
+  },
+  inlets = {
+    {
+      data_type = "",
+      data_unit = "",
+      name = "signal",
+      description = "input signal"
+    }
+  },
+  outlets = {
+    data_type = "",
+    data_unit = "",
+  }
+}
+
 return insightMeta

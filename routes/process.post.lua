@@ -5,6 +5,7 @@ local args = request.body.args
 local functionId = args.function_id
 local groupId = args.group_id
 local constants = args.constants
+local insightModule = require('insightModule')
 
 local dataOUT = insightModule[functionId](request.body)
 
