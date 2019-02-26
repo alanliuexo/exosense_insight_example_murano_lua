@@ -71,4 +71,37 @@ insightMeta.mathFormulaOne = {
   }
 }
 
+insightMeta.mathFormulaTwo = {
+  id = "mathFormulaTwo",
+  name = "Two Variable Formula",
+  description = "Use LuaXP to apply equation calculation. ",
+  constants = {
+    {
+        name = "formula",
+        type = "string",
+        description = "Ex: log(sqrt(x*10)) + y"
+    }
+  },
+  inlets = {
+    {
+        data_type = "NUMBER",
+        data_unit = "",
+        name = "x",
+        description = "x variable"
+    }, {
+      data_type = "NUMBER",
+      data_unit = "",
+      name = "x",
+      description = "x variable"
+    }
+  },
+  outlets = {
+    data_type = "NUMBER",
+    data_unit = "",
+  },
+  history = {
+    limit = {value = 1}
+  }
+}
+
 return insightMeta

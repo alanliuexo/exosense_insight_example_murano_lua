@@ -1,7 +1,7 @@
 --#ENDPOINT GET /insight/{fn}
 -- infoInsight
 
--- NOT YET IMPLEMENTED
+local insightMeta = require('insightMetaModule')
 
 local functionId = request.parameters.fn
-return
+return insightMeta[functionId]
