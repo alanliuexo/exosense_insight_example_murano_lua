@@ -1,3 +1,5 @@
+local luaxp = require('luaxpModule')
+
 insightModule = {}
 
 function insightModule.addNumbers(body)
@@ -26,6 +28,25 @@ function insightModule.addSquareNumber(body)
 
     -- Each signal value in dataOUT should keep the incoming metadata
     dp.value = dp.value + constants.numbertobesqured * constants.numbertobesqured
+
+    table.insert(dataOUT, dp)
+  end
+  return dataOUT
+end
+
+function insightModule.mathFormulaOne(body)
+  local dataIN = body.data
+  local constants = body.args.constants
+  local pr, message
+  pr,message = luaxp.compile(constants.formula)
+
+  dataOUT = {}
+
+-- dataIN is a list of datapoints
+  for _, dp in pairs(dataIN) do
+
+    -- Each signal value in dataOUT should keep the incoming metadata
+    dp.value = luaxp.run(pr, {x = dp.value})
 
     table.insert(dataOUT, dp)
   end

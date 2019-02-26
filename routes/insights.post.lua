@@ -1,59 +1,15 @@
---#ENDPOINT POST /process
+--#ENDPOINT POST /insights
 
 local insightsByGroup = {}
 local emptyList = {}
 setmetatable(emptyList, {['__type']='slice'})
 
-local addNumber = {
-  id = "addNumbers",
-  name = "Add Numbers",
-  description = "Sum one data point and a user-defined value",
-  constants = {
-    {
-      name = "adder",
-      type = "number"
-    }
-  },
-  inlets = {
-    {
-      data_type = "NUMBER",
-      data_unit = "",
-      description = "One number"
-    }
-  },
-  outlets = {
-    data_type = "NUMBER",
-    data_unit = ""
-  }
-}
+local insightMeta = require('insightMetaModule')
 
-local addSquareNumber = {
-  id = "addSquareNumber",
-  name = "Add Square Numbers",
-  description = "Sum one data point with a squared user-defined value",
-  constants = {
-    {
-      name = "numbertobesqured",
-      type = "number"
-    }
-  },
-  inlets = {
-    {
-      data_type = "NUMBER",
-      data_unit = "",
-      description = "One number"
-    }
-  },
-  outlets = {
-    data_type = "NUMBER",
-    data_unit = ""
-  }
-}
-
-insightsByGroup["80000001"] = {addSquareNumber, addNumber}
+insightsByGroup["80000001"] = {insightMeta.addSquareNumber, insightMeta.addNumber}
 
 if request.body.group_id == '' then
-  insightGroup = {addNumber} 
+  insightGroup = {insightMeta.addNumber, insightMeta.mathFormulaOne} 
 else
   insightGroup = insightsByGroup[request.body.group_id]
 end
