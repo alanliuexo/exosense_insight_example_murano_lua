@@ -91,8 +91,8 @@ insightMeta.mathFormulaTwo = {
     }, {
       data_type = "NUMBER",
       data_unit = "",
-      name = "x",
-      description = "x variable"
+      name = "y",
+      description = "y variable"
     }
   },
   outlets = {
