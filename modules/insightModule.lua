@@ -69,7 +69,7 @@ function insightModule.mathFormulaTwo(body)
   for _, val in pairs(history) do
     obj = val[1]
 
-    if obj.tags.inlet then
+    if obj and obj.tags and obj.tags.inlet then
       hisValue[tonumber(obj.tags.inlet)+1] = obj.value
     end
   end
