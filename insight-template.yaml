@@ -2,16 +2,14 @@ swagger: "2.0"
 
 info:
   version: "1.0"
-  title: My Nifty Insight
+  title: alaninsights
   description: |
-    This describes an Insight Module that can be added to Murano Exchange.  An Insight Module can
-    implement one or more Insight Functions.  These Insight Functions can then be added to Assets
-    as a Transformation.
+    alaninsights
   contact:
     name: Your Name Here
     email: YOU@BIZ.com
 
-host: a.real.host # Set this to the host your function is on
+host: alaninsights.apps.exosite.io # Set this to the host your function is on
 basePath: / # Set this or the path according to your function
 schemes:
   - https  # Only https is supported.
@@ -19,6 +17,7 @@ consumes:
   - application/json # Only JSON is supported.
 produces:
   - application/json # Only JSON is supported.
+
 
 ################################################################################
 #                                Operations                                    #

@@ -114,4 +114,15 @@ function insightModule.httpPost(body)
   return from_json(httpResult.body)
 end
 
+function insightModule.testHistory(body) 
+  local dataOUT = {}
+  local dataIN = body.data
+
+  for _, dp in pairs(dataIN) do
+    table.insert(dataOUT, dp)
+  end
+
+  return dataOUT
+end
+
 return insightModule

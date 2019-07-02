@@ -14,7 +14,8 @@ if request.body.group_id == nil or request.body.group_id == '' then
     insightMeta.addNumber, 
     insightMeta.mathFormulaOne, 
     insightMeta.mathFormulaTwo,
-    insightMeta.httpPost
+    insightMeta.httpPost,
+    insightMeta.testHistory
   } 
 else
   insightGroup = insightsByGroup[request.body.group_id]

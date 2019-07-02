@@ -104,6 +104,44 @@ insightMeta.mathFormulaTwo = {
   }
 }
 
+insightMeta.testHistory = {
+  id = "testHistory",
+  name = "testHistory",
+  description = "testHistory",
+  constants = {
+    {
+        name = "relative_start",
+        type = "string",
+        description = "relative_start"
+    },
+    {
+      name = "limit",
+      type = "string",
+      description = "limit"
+    },
+  },
+  inlets = {
+    {
+        data_type = "NUMBER",
+        data_unit = "",
+        name = "x",
+        description = "x variable"
+    }
+  },
+  outlets = {
+    data_type = "NUMBER",
+    data_unit = "",
+  },
+  history = {
+    limit = {
+      constant = "limit"
+    },
+    relative_start = {
+      constant = "relative_start"
+    }
+  }
+}
+
 insightMeta.httpPost = {
   id = "httpPost",
   name = "HTTP Post",
