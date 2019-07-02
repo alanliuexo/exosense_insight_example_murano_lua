@@ -12,14 +12,12 @@ insightMeta.addNumber = {
   },
   inlets = {
     {
-      data_type = "NUMBER",
-      data_unit = "",
+      primitive_type = "numeric",
       description = "One number"
     }
   },
   outlets = {
-    data_type = "NUMBER",
-    data_unit = ""
+    primitive_type = "numeric"
   }
 }
 
@@ -35,14 +33,12 @@ insightMeta.addSquareNumber = {
   },
   inlets = {
     {
-      data_type = "NUMBER",
-      data_unit = "",
+      primitive_type = "numeric",
       description = "One number"
     }
   },
   outlets = {
-    data_type = "NUMBER",
-    data_unit = ""
+    primitive_type = "numeric",
   }
 }
 
@@ -59,15 +55,13 @@ insightMeta.mathFormulaOne = {
   },
   inlets = {
     {
-        data_type = "NUMBER",
-        data_unit = "",
-        name = "x",
-        description = "x variable"
+      primitive_type = "numeric",
+      name = "x",
+      description = "x variable"
     }
   },
   outlets = {
-    data_type = "NUMBER",
-    data_unit = "",
+    primitive_type = "numeric",
   }
 }
 
@@ -84,20 +78,17 @@ insightMeta.mathFormulaTwo = {
   },
   inlets = {
     {
-        data_type = "NUMBER",
-        data_unit = "",
-        name = "x",
-        description = "x variable"
+      primitive_type = "numeric",
+      name = "x",
+      description = "x variable"
     }, {
-      data_type = "NUMBER",
-      data_unit = "",
+      primitive_type = "numeric",
       name = "y",
       description = "y variable"
     }
   },
   outlets = {
-    data_type = "NUMBER",
-    data_unit = "",
+    primitive_type = "numeric",
   },
   history = {
     limit = {value = 1}
@@ -122,15 +113,13 @@ insightMeta.testHistory = {
   },
   inlets = {
     {
-        data_type = "NUMBER",
-        data_unit = "",
-        name = "x",
-        description = "x variable"
+      primitive_type = "numeric",
+      name = "x",
+      description = "x variable"
     }
   },
   outlets = {
-    data_type = "NUMBER",
-    data_unit = "",
+    primitive_type = "numeric",
   },
   history = {
     limit = {
@@ -163,15 +152,13 @@ insightMeta.httpPost = {
   },
   inlets = {
     {
-      data_type = "",
-      data_unit = "",
+      primitive_type = "numeric",
       name = "signal",
       description = "input signal"
     }
   },
   outlets = {
-    data_type = "",
-    data_unit = "",
+    primitive_type = "numeric",
   }
 }
 
