@@ -162,4 +162,28 @@ insightMeta.httpPost = {
   }
 }
 
+insightMeta.wifiMacGeoLocation = {
+  id = "wifiMacGeoLocation",
+  name = "wifiMacGeoLocation",
+  description = "Detect Geolocation based on Wifi AP mac address.",
+  constants = {
+    {
+        name = "api_key",
+        type = "string",
+        description = "Google API Key"
+    }
+  },
+  inlets = {
+    {
+      primitive_type = "JSON",
+      name = "inlet",
+      description = "input signal"
+    }
+  },
+  outlets = {
+    primitive_type = "JSON",
+    data_type = "LOCATION",
+  }
+}
+
 return insightMeta

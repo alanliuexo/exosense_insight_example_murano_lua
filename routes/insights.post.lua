@@ -15,7 +15,8 @@ if request.body.group_id == nil or request.body.group_id == '' then
     insightMeta.mathFormulaOne, 
     insightMeta.mathFormulaTwo,
     insightMeta.httpPost,
-    insightMeta.testHistory
+    insightMeta.testHistory,
+    insightMeta.wifiMacGeoLocation,
   } 
 else
   insightGroup = insightsByGroup[request.body.group_id]

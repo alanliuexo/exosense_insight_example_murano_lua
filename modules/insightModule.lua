@@ -125,4 +125,49 @@ function insightModule.testHistory(body)
   return dataOUT
 end
 
+function insightModule.wifiMacGeoLocation(body)
+  local dataOUT = {}
+  local dataIN = body.data
+  local constants = body.args.constants
+  local api_key = constants.api_key
+
+  local httpResult
+  local url = 'https://www.googleapis.com/geolocation/v1/geolocate?key=' .. api_key
+
+  for _, dp in pairs(dataIN) do
+    local payload = {
+      considerIp = 'false',
+      wifiAccessPoints = {}
+    }
+
+    for _, macInfo in pairs(dp.value) do
+      table.insert(payload.wifiAccessPoints, {
+        macAddress = macInfo.macAddress
+      })
+    end
+
+    -- API Reference: https://docs.exosite.com/reference/services/http/#post
+    httpResult = Http.post({
+      url = url,
+      json = payload
+    })
+
+    local rbody = from_json(httpResult.body)
+    -- log.debug(to_json(rbody))
+
+    if httpResult.status_code ~= 404 then
+      dp.value = rbody.location
+    else
+      dp.value = {
+        lat = 22.0415584,
+        lng = 121.5168307
+      }
+    end
+
+    table.insert(dataOUT, dp)
+  end
+
+  return dataOUT
+end
+
 return insightModule
