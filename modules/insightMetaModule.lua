@@ -183,6 +183,7 @@ insightMeta.wifiMacGeoLocation = {
   outlets = {
     primitive_type = "JSON",
     data_type = "LOCATION",
+    data_unit = "LAT_LONG"
   }
 }
 
