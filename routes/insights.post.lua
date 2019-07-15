@@ -7,15 +7,15 @@ setmetatable(emptyList, {['__type']='slice'})
 
 local insightMeta = require('insightMetaModule')
 
-insightsByGroup["80000001"] = {insightMeta.addSquareNumber, insightMeta.addNumber}
+insightsByGroup["test"] = {
+  insightMeta.httpPost,
+  insightMeta.testHistory,
+}
 
 if request.body.group_id == nil or request.body.group_id == '' then
   insightGroup = {
-    insightMeta.addNumber, 
     insightMeta.mathFormulaOne, 
     insightMeta.mathFormulaTwo,
-    insightMeta.httpPost,
-    insightMeta.testHistory,
     insightMeta.wifiMacGeoLocation,
   } 
 else

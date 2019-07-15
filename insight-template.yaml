@@ -2,9 +2,9 @@ swagger: "2.0"
 
 info:
   version: "1.0"
-  title: alaninsights
+  title: pocinsights
   description: |
-    alaninsights
+    pocinsights
   contact:
     name: Your Name Here
     email: YOU@BIZ.com
