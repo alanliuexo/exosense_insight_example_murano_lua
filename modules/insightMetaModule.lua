@@ -95,6 +95,47 @@ insightMeta.mathFormulaTwo = {
   }
 }
 
+insightMeta.mathFormula = {
+  id = "mathFormula",
+  name = "Math Formula Transform",
+  description = "Use LuaXP to apply equation calculation. ",
+  constants = {
+    {
+        name = "formula",
+        type = "string",
+        description = "Ex: log(sqrt(a*10)) + y"
+    }
+  },
+  inlets = {
+    {
+      primitive_type = "numeric",
+      tag = 'a',
+      name = "First Signal (a)",
+    }, {
+      primitive_type = "numeric",
+      tag = 'b',
+      name = "Second Signal (b)",
+    }, {
+      primitive_type = "numeric",
+      tag = 'c',
+      name = "Third Signal (c)",
+    }, {
+      primitive_type = "numeric",
+      tag = 'd',
+      name = "Fourth Signal (d)",
+    }, {
+      primitive_type = "numeric",
+      tag = 'e',
+      name = "Fifth Signal (e)",
+    }
+  },
+  outlets = {
+  },
+  history = {
+    limit = {value = 1}
+  }
+}
+
 insightMeta.testHistory = {
   id = "testHistory",
   name = "testHistory",

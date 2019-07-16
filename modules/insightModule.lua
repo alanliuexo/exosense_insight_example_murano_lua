@@ -90,6 +90,45 @@ function insightModule.mathFormulaTwo(body)
   return dataOUT
 end
 
+function insightModule.mathFormula(body)
+  local dataIN = body.data
+  local constants = body.args.constants
+  local history = body.history
+  local pr, message
+  pr,message = luaxp.compile(constants.formula)
+
+  local dataOUT = {}
+
+  local hisValue = {}
+  local obj
+
+  -- transform history data
+  for _, val in pairs(history) do
+    obj = val[1]
+
+    if obj and obj.tags and obj.tags.inlet then
+      hisValue[string.lower(obj.tags.inlet)] = obj.value
+    end
+  end
+
+  -- dataIN is a list of datapoints
+  for _, dp in pairs(dataIN) do
+    -- clone hisValue
+    local inlets = {a = 0, b = 0, c = 0, d = 0, e = 0}
+    for orig_key, orig_val in pairs(hisValue) do
+      inlets[orig_key] = orig_val
+    end
+
+    inlets[string.lower(dp.tags.inlet)] = dp.value
+
+    -- Each signal value in dataOUT should keep the incoming metadata
+    dp.value = luaxp.run(pr, inlets)
+
+    table.insert(dataOUT, dp)
+  end
+  return dataOUT
+end
+
 function insightModule.httpPost(body)
   local dataIN = body.data
   local constants = body.args.constants

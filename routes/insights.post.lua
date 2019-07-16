@@ -14,6 +14,7 @@ insightsByGroup["test"] = {
 
 if request.body.group_id == nil or request.body.group_id == '' then
   insightGroup = {
+    insightMeta.mathFormula, 
     insightMeta.mathFormulaOne, 
     insightMeta.mathFormulaTwo,
     insightMeta.wifiMacGeoLocation,
