@@ -1,7 +1,6 @@
 --#ENDPOINT POST /insights
 -- insight information
 
-local insightsByGroup = {}
 local emptyList = {}
 setmetatable(emptyList, {['__type']='slice'})
 
@@ -47,18 +46,54 @@ local addSquareNumber = {
   }
 }
 
-insightsByGroup["80000001"] = {addSquareNumber, addNumber}
+local dataout = {
+  name = 'dataout',
+  description = 'Cross products data out',
+  constants = {
+    {
+      name = 'productid',
+      type = 'string',
+      description = 'product id',
+      required = true,
+    },
+    {
+      name = 'deviceid',
+      type = 'string',
+      description = 'device id',
+      required = true,
+    },
+    {
+      name = 'threshold',
+      type = 'number',
+      description = 'threshold',
+      required = true,
+    },
+    {
+      name = 'command_gt',
+      type = 'string',
+      description = 'command will be send when value > threshold',
+      required = true,
+    },
+    {
+      name = 'command_lt',
+      type = 'string',
+      description = 'command will be send when value < threshold',
+      required = true,
+    }
+  },
+  inlets = {
+    {
+      primitive_type = 'NUMERIC',
+    }
+  },
+  outlets = {
+    {
+      primitive_type = 'STRING',
+    },
+  },
+}
 
-if request.body.group_id == '' then
-  insightGroup = {addNumber} 
-else
-  insightGroup = insightsByGroup[request.body.group_id]
-end
-
-local requestedGroup = insightGroup
-if insightGroup == nil then
-  return {error = "group_id "..request.body.group_id.." does not exist"}
-end
+local requestedGroup = {dataout}
 local count = table.getn(requestedGroup)
 local total = table.getn(requestedGroup)
 
