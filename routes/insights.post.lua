@@ -47,7 +47,8 @@ local addSquareNumber = {
 }
 
 local dataout = {
-  name = 'dataout',
+  id = "dataout",
+  name = 'Data Out',
   description = 'Cross products data out',
   constants = {
     {
