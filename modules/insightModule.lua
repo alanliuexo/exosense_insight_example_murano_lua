@@ -40,6 +40,8 @@ function insightModule.dataout(request)
 
   local product = _G[constants.productid]
 
+  log.info('IN: ' .. to_json(dataIN))
+
   -- dataIN is a list of data points
   for _, dp in pairs(dataIN) do
 
@@ -64,5 +66,7 @@ function insightModule.dataout(request)
 
     table.insert(dataOUT, dp)
   end
+
+  log.info('OUT: ' .. to_json({dataOUT}))
   return {dataOUT}
 end
