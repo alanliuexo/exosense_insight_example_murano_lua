@@ -47,10 +47,44 @@ local addSquareNumber = {
   }
 }
 
+local customRuleThreshold = {
+  id = "customRuleThreshold",
+  name = "customRuleThreshold",
+  description = "custom Rule Threshold",
+  type = "rule",
+  constants = {
+    {
+      name = "numberabove",
+      type = "number"
+    }, 
+    {
+      name = "messageMatch",
+      description = "Extra details for when value does match",
+      type = "string",
+    },
+    {
+      name = "messageElse",
+      description = "Extra details for when value does not match",
+      type = "string",
+      default = "The value didn't match",
+    },
+  },
+  inlets = {
+    {
+      primitive_type = "NUMERIC",
+      description = "One number"
+    }
+  },
+  outlets = {
+    primitive_type = "JSON",
+    type = "STATUS",
+  }
+}
+
 insightsByGroup["80000001"] = {addSquareNumber, addNumber}
 
 if request.body.group_id == '' then
-  insightGroup = {addNumber} 
+  insightGroup = {addNumber, customRuleThreshold} 
 else
   insightGroup = insightsByGroup[request.body.group_id]
 end
